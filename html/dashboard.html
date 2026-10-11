@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIRÓN|Panel de Control</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="dashboard-body-fixed">
+
+    <div class="dashboard-layout">
+        <!-- Panel Lateral Izquierdo Pegado al Borde -->
+        <aside class="sidebar-fixed">
+            <div class="sidebar-top">
+                <div class="brand-box">
+                    <img src="img/logo.png" alt="Logo" class="logo-sidebar">
+                    <h2>Mirón</h2>
+                </div>
+                <ul class="menu-list">
+                    <li class="active"><a href="#">📊 Dashboard</a></li>
+                    <li><a href="#" onclick="abrirModal()">➕ Nueva Prenda</a></li>
+                    <li><a href="#" onclick="cerrarSesion()">🚪 Cerrar Sesión</a></li>
+                </ul>
+            </div>
+
+            <!-- Imagen decorativa en la parte inferior del sidebar -->
+            <div class="sidebar-img-container">
+                <img src="img/dasboard.png" alt="Previsualización" class="sidebar-preview-img">
+            </div>
+        </aside>
+
+        <!-- Contenido Principal del Dashboard -->
+        <main class="main-container-fixed">
+            <header class="top-header-fixed">
+                <h1>Panel de Control - Inventario de Ropa</h1>
+                <div class="user-badge">
+                    <span>Administrador</span>
+                    <div class="avatar-circle">M</div>
+                </div>
+            </header>
+
+            <!-- Tarjetas de Estadísticas (KPIs) -->
+            <section class="kpi-grid">
+                <div class="kpi-card">
+                    <h3>Total de Prendas</h3>
+                    <p id="totalPrendas">0</p>
+                </div>
+                <div class="kpi-card">
+                    <h3>Categorías Activas</h3>
+                    <p>4</p>
+                </div>
+                <div class="kpi-card">
+                    <h3>Stock Bajo (&lt; 5)</h3>
+                    <p id="stockBajo">0</p>
+                </div>
+            </section>
+
+            <!-- Sección de la Tabla -->
+            <section class="table-card-container">
+                <div class="table-header-flex">
+                    <h2>Gestión de Inventario</h2>
+                    <div class="table-actions">
+                        <input type="text" id="searchInput" placeholder="Buscar prenda..." onkeyup="filtrarTabla()">
+                        <button class="btn-add-item" onclick="abrirModal()">+ Agregar Prenda</button>
+                    </div>
+                </div>
+
+                <div class="table-scroll-area">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Prenda</th>
+                                <th>Categoría</th>
+                                <th>Talla</th>
+                                <th>Cantidad</th>
+                                <th>Precio Unitario</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryTableBody">
+                            <!-- Datos dinámicos -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal para Agregar Prenda -->
+    <div id="clothingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="cerrarModal()">&times;</span>
+            <h2>Registrar Nueva Prenda</h2>
+            <form id="clothingForm" onsubmit="guardarPrenda(event)">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Nombre de la Prenda</label>
+                        <input type="text" id="itemName" required placeholder="Ej. Blazer">
+                    </div>
+                    <div class="input-group">
+                        <label>Categoría</label>
+                        <select id="itemCategory" required>
+                            <option value="Chaquetas">Chaquetas</option>
+                            <option value="Camisas">Camisas</option>
+                            <option value="Pantalones">Pantalones</option>
+                            <option value="Calzado">Calzado</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Talla</label>
+                        <select id="itemSize" required>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Cantidad</label>
+                        <input type="number" id="itemQuantity" min="0" required placeholder="10">
+                    </div>
+                    <div class="input-group">
+                        <label>Precio ($)</label>
+                        <input type="number" step="0.01" id="itemPrice" min="0" required placeholder="45.00">
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Guardar Prenda</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/interactividad.js"></script>
+</body>
+</html>

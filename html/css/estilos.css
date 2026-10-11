@@ -1,0 +1,421 @@
+/* --- ESTILOS GLOBALES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ==========================================
+   1. MÓDULO DE INICIO DE SESIÓN 
+   ========================================== */
+.login-body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e2f;
+    overflow: hidden;
+}
+
+.login-container {
+    display: flex;
+    width: 880px;
+    height: 500px;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+.login-image-panel {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+}
+
+.login-image-panel .overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+}
+
+.brand-welcome {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+}
+
+.brand-welcome h2 { 
+    font-size: 1.8rem; 
+    margin-bottom: 6px; 
+}
+
+.brand-welcome p { 
+    font-size: 0.88rem; 
+    opacity: 0.85; 
+}
+
+.login-form-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.login-card { 
+    width: 100%; 
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.logo-img { 
+    width: 45px; 
+    height: 45px; 
+    object-fit: contain; 
+}
+
+.login-card h1 { 
+    font-size: 1.8rem; 
+    color: #2d3436; 
+}
+
+.subtitle { 
+    color: #666; 
+    margin-bottom: 25px; 
+    font-size: 0.9rem; 
+}
+
+.input-group {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    color: #555;
+    font-weight: 600;
+}
+
+.input-group input, .input-group select {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus, .input-group select:focus {
+    border-color: #ff6b6b;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-primary:hover { 
+    opacity: 0.9; 
+}
+
+.error-msg { 
+    color: #ff4757; 
+    font-size: 0.85rem; 
+    margin-top: 10px; 
+    text-align: center; 
+}
+
+
+/* ==========================================
+   2. MÓDULO DEL DASHBOARD (dashboard.html)
+   ========================================== */
+.dashboard-body-fixed {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f1f5f9;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-layout {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Sidebar pegado totalmente al borde izquierdo  */
+.sidebar-fixed {
+    width: 260px;
+    height: 100vh;
+    background-color: #1e1e2f;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.sidebar-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.logo-sidebar {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+.brand-box h2 {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-list li {
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: background 0.3s;
+}
+
+.menu-list li.active, .menu-list li:hover {
+    background-color: rgba(255, 107, 107, 0.25);
+}
+
+.menu-list a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: block;
+}
+
+/* Contenedor de la imagen del panel lateral completa */
+.sidebar-img-container {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(58, 54, 54, 0.2);
+    padding: 5px;
+}
+
+.sidebar-preview-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+/* Contenedor Principal Derecho */
+.main-container-fixed {
+    flex-grow: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 25px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.top-header-fixed {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.top-header-fixed h1 {
+    font-size: 1.5rem;
+    color: #1e293b;
+    margin: 0;
+}
+
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar-circle {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+/* Tarjetas KPI de Estadísticas */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.kpi-card {
+    background: #ffffff;
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.kpi-card h3 {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin: 0 0 5px 0;
+}
+
+.kpi-card p {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #1e293b;
+    margin: 0;
+}
+
+/* Tarjeta contenedora de la tabla */
+.table-card-container {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.table-header-flex h2 {
+    font-size: 1.15rem;
+    color: #1e293b;
+    margin: 0;
+}
+
+.table-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.table-actions input {
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.btn-add-item {
+    padding: 8px 16px;
+    background-color: #0f172a;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.table-scroll-area {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.9rem;
+}
+
+.styled-table th {
+    background-color: #f8fafc;
+    color: #475569;
+}
+
+/* Estilos de la Ventana Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 500px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px; top: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
