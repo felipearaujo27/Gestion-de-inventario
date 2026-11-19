@@ -14,14 +14,22 @@
             <div class="sidebar-top">
                 <div class="brand-box">
                     <img src="img/logo.png" alt="Logo" class="logo-sidebar">
-                    <h2>Mirón</h2>
+                    <h3>Mirón</h3>
+                    <p style="padding: 0 20px; font-size: 0.9em; color: #ccc;">
+                        Bienvenido, <strong id="nombreUsuarioMostrar">Usuario</strong>
+                    </p>
                 </div>
-                <ul class="menu-list">
-                    <li class="active"><a href="#">📊 Dashboard</a></li>
-                    <li><a href="#" onclick="abrirModal()">➕ Nueva Prenda</a></li>
-                    <li><a href="#" onclick="cerrarSesion()">🚪 Cerrar Sesión</a></li>
-                </ul>
-            </div>
+                    <ul class="menu-list">
+                        <li class="active"><a href="#">📊 Dashboard</a></li>
+                        <li><a href="#" onclick="abrirModal()">➕ Nueva Prenda</a></li>
+                        <li>
+                            <a href="#" onclick="abrirModalVenta()">
+                                🛒 Nueva Venta (<span id="contadorCarritoMenu">0</span>)
+                            </a>
+                        </li>
+                        <li><a href="#" onclick="cerrarSesion()">🚪 Cerrar Sesión</a></li>
+                    </ul>
+                </div>
 
             <!-- Imagen decorativa en la parte inferior del sidebar -->
             <div class="sidebar-img-container">
@@ -33,10 +41,6 @@
         <main class="main-container-fixed">
             <header class="top-header-fixed">
                 <h1>Panel de Control - Inventario de Ropa</h1>
-                <div class="user-badge">
-                    <span>Administrador</span>
-                    <div class="avatar-circle">M</div>
-                </div>
             </header>
 
             <!-- Tarjetas de Estadísticas (KPIs) -->
@@ -104,7 +108,6 @@
                             <option value="Chaquetas">Chaquetas</option>
                             <option value="Camisas">Camisas</option>
                             <option value="Pantalones">Pantalones</option>
-                            <option value="Calzado">Calzado</option>
                         </select>
                     </div>
                 </div>
@@ -130,8 +133,57 @@
                 <button type="submit" class="btn-primary">Guardar Prenda</button>
             </form>
         </div>
-    </div>
+    </div> 
 
+    <!-- Modal de Nueva Venta -->
+    <div id="ventaModal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 550px;">
+            <span class="close" onclick="cerrarModalVenta()">&times;</span>
+            <h2>Nueva Venta (Carrito)</h2>
+        
+            <div class="input-group">
+                <label for="ventaPrendaSelect">Seleccionar Prenda</label>
+                <select id="ventaPrendaSelect" onchange="actualizarPrecioVenta()">
+                    <option value="">-- Elige una prenda --</option>
+                </select>
+            </div>
+
+            <div style="display: flex; gap: 10px; align-items: flex-end; margin-bottom: 15px;">
+                <div class="input-group" style="flex: 1; margin-bottom: 0;">
+                    <label for="ventaCantidad">Cantidad</label>
+                    <input type="number" id="ventaCantidad" min="1" value="1" oninput="actualizarPrecioVenta()">
+                </div>
+                <div class="input-group" style="flex: 1; margin-bottom: 0;">
+                    <label>Subtotal</label>
+                    <input type="text" id="ventaPrecioUnitario" readonly value="$0.00">
+                </div>
+            <button type="button" class="btn-primary" onclick="agregarAlCarrito()">+ Agregar</button>
+            </div>
+
+        <div style="max-height: 180px; overflow-y: auto; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 15px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+                <thead>
+                    <tr style="background: #f4f4f4; text-align: left;">
+                        <th style="padding: 8px;">Prenda</th>
+                        <th style="padding: 8px;">Cant.</th>
+                        <th style="padding: 8px;">Subtotal</th>
+                        <th style="padding: 8px;"></th>
+                    </tr>
+                </thead>
+                <tbody id="carritoTableBody"></tbody>
+            </table>
+        </div>
+
+            <form id="ventaForm" onsubmit="procesarVenta(event)">
+                <div class="input-group">
+                    <label><strong>Total a Pagar</strong></label>
+                    <input type="text" id="ventaTotal" readonly value="$0.00" style="font-weight: bold;">
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%;">Confirmar Venta</button>
+            </form>
+        </div>
+    </div>
     <script src="js/interactividad.js"></script>
 </body>
 </html>
